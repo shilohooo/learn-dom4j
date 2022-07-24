@@ -69,4 +69,9 @@ public final class ElementNameConstants {
      * 列能否为空元素
      */
     public static final String COLUMN_DOT_MANDATORY = "Column.Mandatory";
+
+    /**
+     * 注释
+     */
+    public static final String COMMENT = "Comment";
 }
