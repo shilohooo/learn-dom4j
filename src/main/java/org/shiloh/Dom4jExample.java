@@ -31,7 +31,7 @@ public class Dom4jExample {
             // 获取 classpath 下的 xml 文件
             final URL url = Dom4jExample.class
                     .getClassLoader()
-                    .getResource("test.xml");
+                    .getResource("test1.xml");
             // 读取
             final Document document = saxReader.read(url);
             // 获取根元素
@@ -73,7 +73,7 @@ public class Dom4jExample {
         final String tableName = tableEle.elementText(CODE);
         table.setName(tableName);
         // 获取表中文名称
-        table.setComment(tableEle.elementText(NAME));
+        table.setComment(tableEle.elementText(COMMENT));
         // 获取表的创建人姓名
         table.setCreator(tableEle.elementText(CREATOR));
         // 获取表的创建日期
