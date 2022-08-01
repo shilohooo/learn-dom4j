@@ -30,6 +30,11 @@ public class Column {
     private String fieldName;
 
     /**
+     * 列对应的实体字段类型
+     */
+    private String fieldType;
+
+    /**
      * 列的注释
      */
     private String comment;
@@ -86,6 +91,14 @@ public class Column {
         this.fieldName = fieldName;
     }
 
+    public String getFieldType() {
+        return fieldType;
+    }
+
+    public void setFieldType(String fieldType) {
+        this.fieldType = fieldType;
+    }
+
     public String getComment() {
         return comment;
     }
@@ -133,6 +146,7 @@ public class Column {
                 ", id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 ", fieldName='" + fieldName + '\'' +
+                ", fieldType='" + fieldType + '\'' +
                 ", comment='" + comment + '\'' +
                 ", dataType='" + dataType + '\'' +
                 ", length=" + length +
