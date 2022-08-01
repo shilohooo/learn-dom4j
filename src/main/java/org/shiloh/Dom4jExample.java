@@ -5,6 +5,7 @@ import org.dom4j.Document;
 import org.dom4j.DocumentException;
 import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
+import org.shiloh.common.mapper.FieldTypeMappingUtils;
 import org.shiloh.pojo.Column;
 import org.shiloh.pojo.Table;
 
@@ -125,7 +126,11 @@ public class Dom4jExample {
             // 获取列注释
             column.setComment(columnEle.elementText(NAME));
             // 获取列的数据类型
-            column.setDataType(columnEle.elementText(DATA_TYPE));
+            final String columnType = columnEle.elementText(DATA_TYPE);
+            column.setDataType(columnType);
+            // 获取列的数据类型对应的实体字段类型
+            final String fieldType = FieldTypeMappingUtils.getFieldType(columnType);
+            column.setFieldType(fieldType);
             // 获取列的字段长度
             final Element lengthEle = columnEle.element(LENGTH);
             if (lengthEle != null) {
