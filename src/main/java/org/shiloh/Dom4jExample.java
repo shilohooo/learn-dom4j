@@ -5,7 +5,6 @@ import org.dom4j.Document;
 import org.dom4j.DocumentException;
 import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
-import org.shiloh.common.util.FieldTypeMappingUtils;
 import org.shiloh.pojo.Column;
 import org.shiloh.pojo.Table;
 
@@ -19,6 +18,8 @@ import static org.shiloh.common.constant.AttributeNameConstants.REF;
 import static org.shiloh.common.constant.ColumnConstants.NULLABLE_FLAG;
 import static org.shiloh.common.constant.ElementNameConstants.*;
 import static org.shiloh.common.constant.XPathConstants.TABLES_PATH;
+import static org.shiloh.common.util.FieldTypeMappingUtils.getFieldType;
+import static org.shiloh.common.util.FieldTypeQualifiedNameUtils.getQualifiedNameByFieldType;
 
 /**
  * dom4j 解析 pdm 文件示例
@@ -129,8 +130,11 @@ public class Dom4jExample {
             final String columnType = columnEle.elementText(DATA_TYPE);
             column.setDataType(columnType);
             // 获取列的数据类型对应的实体字段类型
-            final String fieldType = FieldTypeMappingUtils.getFieldType(columnType);
+            final String fieldType = getFieldType(columnType);
             column.setFieldType(fieldType);
+            // 获取实体字段数据类型的全限定类名
+            final String qualifiedName = getQualifiedNameByFieldType(fieldType);
+            column.setFieldTypeQualifiedName(qualifiedName);
             // 获取列的字段长度
             final Element lengthEle = columnEle.element(LENGTH);
             if (lengthEle != null) {
