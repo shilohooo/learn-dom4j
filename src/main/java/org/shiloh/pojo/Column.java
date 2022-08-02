@@ -39,7 +39,7 @@ public class Column {
      * <p>
      * 数据类型属于自动导入的包时，该值为 {@code null}
      */
-    private String fieldTypePackage;
+    private String fieldTypeQualifiedName;
 
     /**
      * 列的注释
@@ -104,6 +104,14 @@ public class Column {
 
     public void setFieldType(String fieldType) {
         this.fieldType = fieldType;
+    }
+
+    public String getFieldTypeQualifiedName() {
+        return fieldTypeQualifiedName;
+    }
+
+    public void setFieldTypeQualifiedName(String fieldTypeQualifiedName) {
+        this.fieldTypeQualifiedName = fieldTypeQualifiedName;
     }
 
     public String getComment() {
