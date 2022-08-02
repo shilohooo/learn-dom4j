@@ -162,6 +162,7 @@ public class Column {
                 ", name='" + name + '\'' +
                 ", fieldName='" + fieldName + '\'' +
                 ", fieldType='" + fieldType + '\'' +
+                ", fieldTypeQualifiedName='" + fieldTypeQualifiedName + '\'' +
                 ", comment='" + comment + '\'' +
                 ", dataType='" + dataType + '\'' +
                 ", length=" + length +
