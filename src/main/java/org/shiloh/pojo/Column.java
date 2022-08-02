@@ -35,6 +35,13 @@ public class Column {
     private String fieldType;
 
     /**
+     * 实体字段数据类型所属包
+     * <p>
+     * 数据类型属于自动导入的包时，该值为 {@code null}
+     */
+    private String fieldTypePackage;
+
+    /**
      * 列的注释
      */
     private String comment;
