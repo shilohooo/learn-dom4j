@@ -1,4 +1,4 @@
-package org.shiloh.common.mapper;
+package org.shiloh.common.util;
 
 import cn.hutool.core.util.StrUtil;
 

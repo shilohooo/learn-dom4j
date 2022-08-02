@@ -5,7 +5,7 @@ import org.dom4j.Document;
 import org.dom4j.DocumentException;
 import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
-import org.shiloh.common.mapper.FieldTypeMappingUtils;
+import org.shiloh.common.util.FieldTypeMappingUtils;
 import org.shiloh.pojo.Column;
 import org.shiloh.pojo.Table;
 
