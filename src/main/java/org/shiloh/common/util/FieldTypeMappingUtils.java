@@ -2,6 +2,8 @@ package org.shiloh.common.util;
 
 import cn.hutool.core.util.StrUtil;
 
+import java.math.BigDecimal;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -24,23 +26,26 @@ public final class FieldTypeMappingUtils {
 
     static {
         // bit 类型
-        FIELD_TYPE_CACHE.put("bit", "Boolean");
+        FIELD_TYPE_CACHE.put("bit", Boolean.class.getSimpleName());
         // 整数类型
-        FIELD_TYPE_CACHE.put("tinyint", "Integer");
-        FIELD_TYPE_CACHE.put("int", "Integer");
-        FIELD_TYPE_CACHE.put("bigint", "Long");
+        final String intTypeName = Integer.class.getSimpleName();
+        FIELD_TYPE_CACHE.put("tinyint", intTypeName);
+        FIELD_TYPE_CACHE.put("int", intTypeName);
+        FIELD_TYPE_CACHE.put("bigint", Long.class.getSimpleName());
         // 浮点数类型
-        FIELD_TYPE_CACHE.put("float", "Float");
-        FIELD_TYPE_CACHE.put("double", "Double");
-        FIELD_TYPE_CACHE.put("decimal", "BigDecimal");
+        FIELD_TYPE_CACHE.put("float", Float.class.getSimpleName());
+        FIELD_TYPE_CACHE.put("double", Double.class.getSimpleName());
+        FIELD_TYPE_CACHE.put("decimal", BigDecimal.class.getSimpleName());
         // 字符类型
-        FIELD_TYPE_CACHE.put("char", "String");
-        FIELD_TYPE_CACHE.put("varchar", "String");
-        FIELD_TYPE_CACHE.put("text", "String");
-        FIELD_TYPE_CACHE.put("longtext", "String");
+        final String stringTypeName = String.class.getSimpleName();
+        FIELD_TYPE_CACHE.put("char", stringTypeName);
+        FIELD_TYPE_CACHE.put("varchar", stringTypeName);
+        FIELD_TYPE_CACHE.put("text", stringTypeName);
+        FIELD_TYPE_CACHE.put("longtext", stringTypeName);
         // 日期类型
-        FIELD_TYPE_CACHE.put("date", "Date");
-        FIELD_TYPE_CACHE.put("datetime", "Date");
+        final String dateTypeName = Date.class.getSimpleName();
+        FIELD_TYPE_CACHE.put("date", dateTypeName);
+        FIELD_TYPE_CACHE.put("datetime", dateTypeName);
     }
 
     /**
