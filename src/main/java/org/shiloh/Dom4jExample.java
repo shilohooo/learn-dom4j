@@ -12,6 +12,8 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 import static org.shiloh.common.constant.AttributeNameConstants.ID;
 import static org.shiloh.common.constant.AttributeNameConstants.REF;
@@ -94,6 +96,14 @@ public class Dom4jExample {
         columns.forEach(column -> column.setTableName(tableName));
 
         table.setColumns(columns);
+
+        // 获取要导入的包
+        final Set<String> packages = columns.stream()
+                .map(Column::getFieldTypeQualifiedName)
+                .filter(StrUtil::isNotBlank)
+                .collect(Collectors.toSet());
+        table.setPackages(packages);
+
         return table;
     }
 
