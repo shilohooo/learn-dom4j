@@ -2,6 +2,7 @@ package org.shiloh.pojo;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 /**
  * 表信息
@@ -43,6 +44,11 @@ public class Table {
      * 表中的列信息
      */
     private List<Column> columns;
+
+    /**
+     * 需要导入的包的集合
+     */
+    private Set<String> packages;
 
     public String getName() {
         return name;
@@ -92,6 +98,14 @@ public class Table {
         this.columns = columns;
     }
 
+    public Set<String> getPackages() {
+        return packages;
+    }
+
+    public void setPackages(Set<String> packages) {
+        this.packages = packages;
+    }
+
     @Override
     public String toString() {
         return "Table{" +
@@ -100,6 +114,8 @@ public class Table {
                 ", creator='" + creator + '\'' +
                 ", createDate=" + createDate +
                 ", primaryKeyRef='" + primaryKeyRef + '\'' +
+                ", columns=" + columns +
+                ", packages=" + packages +
                 '}';
     }
 }
