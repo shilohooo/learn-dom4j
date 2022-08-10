@@ -36,6 +36,6 @@ public final class FieldTypeQualifiedNameUtils {
      * @date 2022/8/2 17:50
      */
     public static String getQualifiedNameByFieldType(String fieldType) {
-        return QUALIFIED_NAME_CACHE.getOrDefault(fieldType, null);
+        return QUALIFIED_NAME_CACHE.get(fieldType);
     }
 }
