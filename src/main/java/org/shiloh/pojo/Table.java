@@ -114,7 +114,6 @@ public class Table {
                 ", creator='" + creator + '\'' +
                 ", createDate=" + createDate +
                 ", primaryKeyRef='" + primaryKeyRef + '\'' +
-                ", columns=" + columns +
                 ", packages=" + packages +
                 '}';
     }
