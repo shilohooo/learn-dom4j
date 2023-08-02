@@ -1,10 +1,12 @@
 package org.shiloh;
 
-import cn.hutool.core.util.StrUtil;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.text.CaseUtils;
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
 import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
+import org.shiloh.common.constant.SymbolConstants;
 import org.shiloh.pojo.Column;
 import org.shiloh.pojo.Table;
 
@@ -99,7 +101,7 @@ public class Dom4jExample {
             // 获取要导入的包
             final Set<String> packages = columns.stream()
                     .map(Column::getFieldTypeQualifiedName)
-                    .filter(StrUtil::isNotBlank)
+                    .filter(StringUtils::isNotBlank)
                     .collect(Collectors.toSet());
             table.setPackages(packages);
 
@@ -133,8 +135,8 @@ public class Dom4jExample {
             final String colName = columnEle.elementText(CODE);
             column.setName(colName);
             // 列名转驼峰，设置字段名称
-            final String fieldName = StrUtil.toCamelCase(colName);
-            column.setFieldName(StrUtil.isBlank(fieldName) ? colName : fieldName);
+            final String fieldName = CaseUtils.toCamelCase(colName, false, SymbolConstants.UNDESCORE.charAt(0));
+            column.setFieldName(StringUtils.isBlank(fieldName) ? colName : fieldName);
             // 获取列注释
             column.setComment(columnEle.elementText(COMMENT));
             // 获取列的数据类型
