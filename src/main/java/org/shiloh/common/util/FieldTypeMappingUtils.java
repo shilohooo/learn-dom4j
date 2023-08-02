@@ -1,6 +1,6 @@
 package org.shiloh.common.util;
 
-import cn.hutool.core.util.StrUtil;
+import org.apache.commons.lang3.StringUtils;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -58,7 +58,7 @@ public final class FieldTypeMappingUtils {
      */
     public static String getFieldType(String columnType) {
         // 解析到的列数据类型字符串可能会带有类的长度（在括号中），先截取括号前的数据类型
-        final String columnTypeWithoutSymbol = StrUtil.subBefore(columnType, LEFT_BRACE, true);
+        final String columnTypeWithoutSymbol = StringUtils.substringBefore(columnType, LEFT_BRACE);
         return FIELD_TYPE_CACHE.get(columnTypeWithoutSymbol);
     }
 }
