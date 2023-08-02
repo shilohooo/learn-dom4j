@@ -22,6 +22,11 @@ public class Table {
     private String name;
 
     /**
+     * 实体名称
+     */
+    private String entityName;
+
+    /**
      * 表的中文名称
      */
     private String comment;
