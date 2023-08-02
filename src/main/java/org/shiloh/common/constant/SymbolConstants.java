@@ -14,4 +14,9 @@ public final class SymbolConstants {
      * 左大括号
      */
     public static final String LEFT_BRACE = "(";
+
+    /**
+     * 下划线
+     */
+    public static final String UNDESCORE = "_";
 }
