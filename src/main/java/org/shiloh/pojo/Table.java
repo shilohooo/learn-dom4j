@@ -1,5 +1,8 @@
 package org.shiloh.pojo;
 
+import lombok.Data;
+import lombok.ToString;
+
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
@@ -10,6 +13,8 @@ import java.util.Set;
  * @author shiloh
  * @date 2022/7/14 15:52
  */
+@Data
+@ToString
 public class Table {
     /**
      * 表名称
@@ -43,78 +48,11 @@ public class Table {
     /**
      * 表中的列信息
      */
+    @ToString.Exclude
     private List<Column> columns;
 
     /**
      * 需要导入的包的集合
      */
     private Set<String> packages;
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getComment() {
-        return comment;
-    }
-
-    public void setComment(String comment) {
-        this.comment = comment;
-    }
-
-    public String getCreator() {
-        return creator;
-    }
-
-    public void setCreator(String creator) {
-        this.creator = creator;
-    }
-
-    public Date getCreateDate() {
-        return createDate;
-    }
-
-    public void setCreateDate(Date createDate) {
-        this.createDate = createDate;
-    }
-
-    public String getPrimaryKeyRef() {
-        return primaryKeyRef;
-    }
-
-    public void setPrimaryKeyRef(String primaryKeyRef) {
-        this.primaryKeyRef = primaryKeyRef;
-    }
-
-    public List<Column> getColumns() {
-        return columns;
-    }
-
-    public void setColumns(List<Column> columns) {
-        this.columns = columns;
-    }
-
-    public Set<String> getPackages() {
-        return packages;
-    }
-
-    public void setPackages(Set<String> packages) {
-        this.packages = packages;
-    }
-
-    @Override
-    public String toString() {
-        return "Table{" +
-                "name='" + name + '\'' +
-                ", comment='" + comment + '\'' +
-                ", creator='" + creator + '\'' +
-                ", createDate=" + createDate +
-                ", primaryKeyRef='" + primaryKeyRef + '\'' +
-                ", packages=" + packages +
-                '}';
-    }
 }

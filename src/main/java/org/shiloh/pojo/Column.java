@@ -1,11 +1,14 @@
 package org.shiloh.pojo;
 
+import lombok.Data;
+
 /**
  * 列信息
  *
  * @author shiloh
  * @date 2022/7/14 15:55
  */
+@Data
 public class Column {
     /**
      * 所属表名
@@ -65,109 +68,4 @@ public class Column {
      * 是否为主键
      */
     private Boolean isPrimaryKey;
-
-    public String getTableName() {
-        return tableName;
-    }
-
-    public void setTableName(String tableName) {
-        this.tableName = tableName;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getFieldName() {
-        return fieldName;
-    }
-
-    public void setFieldName(String fieldName) {
-        this.fieldName = fieldName;
-    }
-
-    public String getFieldType() {
-        return fieldType;
-    }
-
-    public void setFieldType(String fieldType) {
-        this.fieldType = fieldType;
-    }
-
-    public String getFieldTypeQualifiedName() {
-        return fieldTypeQualifiedName;
-    }
-
-    public void setFieldTypeQualifiedName(String fieldTypeQualifiedName) {
-        this.fieldTypeQualifiedName = fieldTypeQualifiedName;
-    }
-
-    public String getComment() {
-        return comment;
-    }
-
-    public void setComment(String comment) {
-        this.comment = comment;
-    }
-
-    public String getDataType() {
-        return dataType;
-    }
-
-    public void setDataType(String dataType) {
-        this.dataType = dataType;
-    }
-
-    public Integer getLength() {
-        return length;
-    }
-
-    public void setLength(Integer length) {
-        this.length = length;
-    }
-
-    public Boolean getNullable() {
-        return nullable;
-    }
-
-    public void setNullable(Boolean nullable) {
-        this.nullable = nullable;
-    }
-
-    public Boolean getIsPrimaryKey() {
-        return this.isPrimaryKey;
-    }
-
-    public void setIsPrimaryKey(Boolean isPrimaryKey) {
-        this.isPrimaryKey = isPrimaryKey;
-    }
-
-    @Override
-    public String toString() {
-        return "Column{" +
-                "tableName='" + tableName + '\'' +
-                ", id='" + id + '\'' +
-                ", name='" + name + '\'' +
-                ", fieldName='" + fieldName + '\'' +
-                ", fieldType='" + fieldType + '\'' +
-                ", fieldTypeQualifiedName='" + fieldTypeQualifiedName + '\'' +
-                ", comment='" + comment + '\'' +
-                ", dataType='" + dataType + '\'' +
-                ", length=" + length +
-                ", nullable=" + nullable +
-                ", isPrimaryKey=" + isPrimaryKey +
-                '}';
-    }
 }
