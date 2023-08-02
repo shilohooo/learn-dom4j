@@ -36,14 +36,16 @@ public final class FieldTypeMappingUtils {
         FIELD_TYPE_CACHE.put("float", Float.class.getSimpleName());
         FIELD_TYPE_CACHE.put("double", Double.class.getSimpleName());
         FIELD_TYPE_CACHE.put("decimal", BigDecimal.class.getSimpleName());
-        // 字符类型
+        // 字符、字符串类型
         final String stringTypeName = String.class.getSimpleName();
         FIELD_TYPE_CACHE.put("char", stringTypeName);
         FIELD_TYPE_CACHE.put("varchar", stringTypeName);
         FIELD_TYPE_CACHE.put("text", stringTypeName);
         FIELD_TYPE_CACHE.put("longtext", stringTypeName);
+        FIELD_TYPE_CACHE.put("json", stringTypeName);
         // 日期类型
         final String dateTypeName = Date.class.getSimpleName();
+        FIELD_TYPE_CACHE.put("time", dateTypeName);
         FIELD_TYPE_CACHE.put("date", dateTypeName);
         FIELD_TYPE_CACHE.put("datetime", dateTypeName);
     }
