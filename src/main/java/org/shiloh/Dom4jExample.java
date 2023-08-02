@@ -3,10 +3,10 @@ package org.shiloh;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.text.CaseUtils;
 import org.dom4j.Document;
-import org.dom4j.DocumentException;
 import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
 import org.shiloh.common.constant.SymbolConstants;
+import org.shiloh.generator.EntityGenerator;
 import org.shiloh.pojo.Column;
 import org.shiloh.pojo.Table;
 
@@ -32,28 +32,18 @@ import static org.shiloh.common.util.FieldTypeQualifiedNameUtils.getQualifiedNam
  * @date 2022/7/13 17:44
  */
 public class Dom4jExample {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         final SAXReader saxReader = new SAXReader();
-        try {
-            // 获取 classpath 下的 xml 文件
-            final URL url = Dom4jExample.class
-                    .getClassLoader()
-                    .getResource("test2.xml");
-            // 读取
-            final Document document = saxReader.read(url);
-            // 获取根元素
-            final List<Table> tables = getTables(document);
-            // 测试输出表信息
-            tables.forEach(table -> {
-                System.out.println("============= Table Info =============");
-                System.out.println(table);
-                // 输出列信息
-                System.out.println("============= Column Info =============");
-                table.getColumns().forEach(System.out::println);
-            });
-        } catch (DocumentException e) {
-            throw new RuntimeException(e);
-        }
+        // 获取 classpath 下的 xml 文件
+        final URL url = Dom4jExample.class
+                .getClassLoader()
+                .getResource("test2.xml");
+        // 获取根元素
+        final Document document = saxReader.read(url);
+        // 读取表信息
+        final List<Table> tables = getTables(document);
+        // 生成实体
+        EntityGenerator.generate(tables);
     }
 
     /**
@@ -77,6 +67,7 @@ public class Dom4jExample {
             // 获取表英文名称
             final String tableName = tableEle.elementText(CODE);
             table.setName(tableName);
+            table.setEntityName(CaseUtils.toCamelCase(tableName, true, SymbolConstants.UNDESCORE.charAt(0)));
             // 获取表中文名称
             table.setComment(tableEle.elementText(COMMENT));
             // 获取表的创建人姓名
