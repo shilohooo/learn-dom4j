@@ -19,7 +19,6 @@
         <!--    依赖版本-->
         <dom4j.version>2.1.3</dom4j.version>
         <jaxen.version>1.2.0</jaxen.version>
-        <hutool.version>5.8.3</hutool.version>
         <junit.version>4.13.2</junit.version>
         <freemarker.version>2.3.31</freemarker.version>
         <lombok.version>1.18.24</lombok.version>
@@ -27,6 +26,7 @@
         <javax-annotation-api.version>1.3.2</javax-annotation-api.version>
         <hibernate-core.version>5.3.20.Final</hibernate-core.version>
         <apache-commons-lang3.version>3.12.0</apache-commons-lang3.version>
+        <apache-commons-text.version>1.10.0</apache-commons-text.version>
     </properties>
 
     <!--    依赖版本统一管理-->
@@ -44,13 +44,6 @@
                 <groupId>jaxen</groupId>
                 <artifactId>jaxen</artifactId>
                 <version>${jaxen.version}</version>
-            </dependency>
-
-            <!--            工具类库-->
-            <dependency>
-                <groupId>cn.hutool</groupId>
-                <artifactId>hutool-all</artifactId>
-                <version>${hutool.version}</version>
             </dependency>
 
             <!--            单元测试-->
@@ -95,6 +88,13 @@
                 <artifactId>commons-lang3</artifactId>
                 <version>${apache-commons-lang3.version}</version>
             </dependency>
+
+            <!--            apache commons text - 文本操作类库-->
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-text</artifactId>
+                <version>${apache-commons-text.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -108,11 +108,6 @@
         <dependency>
             <groupId>jaxen</groupId>
             <artifactId>jaxen</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>cn.hutool</groupId>
-            <artifactId>hutool-all</artifactId>
         </dependency>
 
         <dependency>
@@ -144,6 +139,11 @@
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-text</artifactId>
         </dependency>
     </dependencies>
 </project>
