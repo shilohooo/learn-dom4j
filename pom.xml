@@ -89,7 +89,7 @@
                 <version>${hibernate-core.version}</version>
             </dependency>
 
-<!--            apache commons lang3 - 基础工具类库-->
+            <!--            apache commons lang3 - 基础工具类库-->
             <dependency>
                 <groupId>org.apache.commons</groupId>
                 <artifactId>commons-lang3</artifactId>
