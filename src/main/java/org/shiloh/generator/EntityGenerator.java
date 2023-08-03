@@ -53,6 +53,8 @@ public class EntityGenerator {
         createPackageIfNotExists(packagePath);
         // 创建 freemarker 实例，指定 freemarker 版本
         final Configuration configuration = new Configuration(Configuration.VERSION_2_3_31);
+        // 获取模板文件
+        configuration.setDirectoryForTemplateLoading(new File(TEMPLATE_PATH));
         for (Table table : tables) {
             // 指定实体类文件输出文件
             try (final BufferedWriter bufferedWriter = new BufferedWriter(
@@ -60,8 +62,6 @@ public class EntityGenerator {
                             Files.newOutputStream(Paths.get(packagePath + table.getEntityName() + ".java"))
                     )
             )) {
-                // 获取模板文件
-                configuration.setDirectoryForTemplateLoading(new File(TEMPLATE_PATH));
                 // 创建数据模型
                 final Map<String, Object> dataMap = new HashMap<>(16);
                 // 插入模板变量与对应的值
