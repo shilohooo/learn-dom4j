@@ -2,7 +2,9 @@ package ${package};
 
 import java.io.Serializable;
 import javax.persistence.*;
-import lombok.Data;
+import lombok.Setter;
+import lombok.Getter;
+import lombok.ToString;
 <#list dependencies as dependence>
 import ${dependence};
 </#list>
@@ -13,7 +15,10 @@ import ${dependence};
  * @author ${table.creator}
  * @date ${.now?string("yyyy/MM/dd HH:mm")}
  */
-@Data
+@Entity
+@Setter
+@Getter
+@ToString
 @Table(name = "${table.name}")
 @org.hibernate.annotations.Table(appliesTo = "${table.name}", comment = "${table.comment}")
 public class ${table.entityName} implements Serializable {
