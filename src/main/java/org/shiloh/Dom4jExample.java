@@ -19,7 +19,7 @@ import java.util.stream.Collectors;
 
 import static org.shiloh.common.constant.AttributeNameConstants.ID;
 import static org.shiloh.common.constant.AttributeNameConstants.REF;
-import static org.shiloh.common.constant.ColumnConstants.NULLABLE_FLAG;
+import static org.shiloh.common.constant.ColumnConstants.MANDATORY;
 import static org.shiloh.common.constant.ElementNameConstants.*;
 import static org.shiloh.common.constant.XPathConstants.TABLES_PATH;
 import static org.shiloh.common.util.FieldTypeMappingUtils.getFieldType;
@@ -68,7 +68,7 @@ public class Dom4jExample {
             final String tableName = tableEle.elementText(CODE);
             table.setName(tableName);
             table.setEntityName(CaseUtils.toCamelCase(tableName, true, SymbolConstants.UNDESCORE.charAt(0)));
-            // 获取表中文名称
+            // 获取表注释
             table.setComment(tableEle.elementText(COMMENT));
             // 获取表的创建人姓名
             table.setCreator(tableEle.elementText(CREATOR));
@@ -90,11 +90,11 @@ public class Dom4jExample {
             table.setColumns(columns);
 
             // 获取要导入的包
-            final Set<String> packages = columns.stream()
+            final Set<String> dependencies = columns.stream()
                     .map(Column::getFieldTypeQualifiedName)
                     .filter(StringUtils::isNotBlank)
                     .collect(Collectors.toSet());
-            table.setDependencies(packages);
+            table.setDependencies(dependencies);
 
             tables.add(table);
         });
@@ -145,7 +145,7 @@ public class Dom4jExample {
                 column.setLength(Integer.valueOf(lengthEle.getText()));
             }
             // 获取列能否为空的标识
-            column.setNullable(!NULLABLE_FLAG.equals(columnEle.elementText(COLUMN_DOT_MANDATORY)));
+            column.setNullable(!MANDATORY.equals(columnEle.elementText(COLUMN_DOT_MANDATORY)));
             columns.add(column);
         });
         return columns;

@@ -11,10 +11,7 @@ public final class ColumnConstants {
     }
 
     /**
-     * 列的值能否为空的标识：
-     * <p>
-     * 1 = 值不能为空
-     * 0 = 值可以为空
+     * 列的值是否必填：1 = 是，0 = 否
      */
-    public static final String NULLABLE_FLAG = "1";
+    public static final String MANDATORY = "1";
 }
