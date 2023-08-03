@@ -94,7 +94,7 @@ public class Dom4jExample {
                     .map(Column::getFieldTypeQualifiedName)
                     .filter(StringUtils::isNotBlank)
                     .collect(Collectors.toSet());
-            table.setPackages(packages);
+            table.setDependencies(packages);
 
             tables.add(table);
         });

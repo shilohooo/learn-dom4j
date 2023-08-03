@@ -53,9 +53,9 @@ public class EntityGenerator {
                 // 创建数据模型
                 final Map<String, Object> dataMap = new HashMap<>(16);
                 // 插入模板变量与对应的值
-                dataMap.put("classpath", "org.shiloh.entity");
+                dataMap.put("package", "org.shiloh.entity");
                 dataMap.put("table", table);
-                dataMap.put("packages", table.getPackages());
+                dataMap.put("dependencies", table.getDependencies());
                 // 加载模板文件
                 final Template template = configuration.getTemplate("entity.ftl");
                 // 生成源代码文件

@@ -1,10 +1,10 @@
-package ${classpath};
+package ${package};
 
 import java.io.Serializable;
 import javax.persistence.*;
 import lombok.Data;
-<#list packages as package>
-import ${package};
+<#list dependencies as dependence>
+import ${dependence};
 </#list>
 
 /**

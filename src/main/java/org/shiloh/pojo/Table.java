@@ -27,7 +27,7 @@ public class Table {
     private String entityName;
 
     /**
-     * 表的中文名称
+     * 表注释
      */
     private String comment;
 
@@ -59,5 +59,5 @@ public class Table {
     /**
      * 需要导入的包的集合
      */
-    private Set<String> packages;
+    private Set<String> dependencies;
 }
