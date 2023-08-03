@@ -32,6 +32,11 @@ import static org.shiloh.common.util.FieldTypeQualifiedNameUtils.getQualifiedNam
  * @date 2022/7/13 17:44
  */
 public class Dom4jExample {
+    /**
+     * 实体类包名
+     */
+    public static final String PACKAGE_NAME = "org.shiloh.entity";
+
     public static void main(String[] args) throws Exception {
         final SAXReader saxReader = new SAXReader();
         // 获取 classpath 下的 xml 文件
@@ -43,7 +48,7 @@ public class Dom4jExample {
         // 读取表信息
         final List<Table> tables = getTables(document);
         // 生成实体
-        EntityGenerator.generate(tables);
+        EntityGenerator.generate(PACKAGE_NAME, tables);
     }
 
     /**
@@ -67,7 +72,9 @@ public class Dom4jExample {
             // 获取表英文名称
             final String tableName = tableEle.elementText(CODE);
             table.setName(tableName);
-            table.setEntityName(CaseUtils.toCamelCase(tableName, true, SymbolConstants.UNDESCORE.charAt(0)));
+            table.setEntityName(CaseUtils.toCamelCase(
+                    tableName, true, SymbolConstants.UNDERSCORE_CHAR
+            ));
             // 获取表注释
             table.setComment(tableEle.elementText(COMMENT));
             // 获取表的创建人姓名
@@ -126,7 +133,9 @@ public class Dom4jExample {
             final String colName = columnEle.elementText(CODE);
             column.setName(colName);
             // 列名转驼峰，设置字段名称
-            final String fieldName = CaseUtils.toCamelCase(colName, false, SymbolConstants.UNDESCORE.charAt(0));
+            final String fieldName = CaseUtils.toCamelCase(
+                    colName, false, SymbolConstants.UNDERSCORE_CHAR
+            );
             column.setFieldName(StringUtils.isBlank(fieldName) ? colName : fieldName);
             // 获取列注释
             column.setComment(columnEle.elementText(COMMENT));

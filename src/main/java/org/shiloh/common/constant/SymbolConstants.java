@@ -18,5 +18,20 @@ public final class SymbolConstants {
     /**
      * 下划线
      */
-    public static final String UNDESCORE = "_";
+    public static final String UNDERSCORE = "_";
+
+    /**
+     * 下划线字符
+     */
+    public static final char UNDERSCORE_CHAR = UNDERSCORE.charAt(0);
+
+    /**
+     * 斜杠
+     */
+    public static final String SLASH = "/";
+
+    /**
+     * 点
+     */
+    public static final String DOT = ".";
 }

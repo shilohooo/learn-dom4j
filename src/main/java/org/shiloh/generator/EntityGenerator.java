@@ -3,6 +3,7 @@ package org.shiloh.generator;
 import freemarker.template.Configuration;
 import freemarker.template.Template;
 import lombok.experimental.UtilityClass;
+import org.shiloh.common.constant.SymbolConstants;
 import org.shiloh.pojo.Table;
 
 import java.io.BufferedWriter;
@@ -24,28 +25,39 @@ import java.util.Map;
  */
 @UtilityClass
 public class EntityGenerator {
+    /**
+     * 实体模板存放路径
+     */
     private static final String TEMPLATE_PATH = "src/main/resources/templates";
 
-    private static final String CLASSPATH = "src/main/java/org/shiloh/entity/";
+    /**
+     * 源码存放路径
+     */
+    private static final String SOURCE_CODE_PATH = "src/main/java/";
 
     /**
      * 根据表信息生成实体类
      *
-     * @param tables 表信息集合
+     * @param packageName 包名
+     * @param tables      表信息集合
      * @throws Exception 生成失败抛出的异常
      * @author shiloh
      * @date 2023/8/2 16:38
      */
-    public static void generate(List<Table> tables) throws Exception {
+    public static void generate(String packageName, List<Table> tables) throws Exception {
+        final String packagePath = String.format(
+                "%s%s%s",
+                SOURCE_CODE_PATH, packageName.replaceAll("\\.", SymbolConstants.SLASH), SymbolConstants.SLASH
+        );
         // 如果指定的包不存在，则新建一个
-        createPackageIfNotExists();
+        createPackageIfNotExists(packagePath);
         // 创建 freemarker 实例，指定 freemarker 版本
         final Configuration configuration = new Configuration(Configuration.VERSION_2_3_31);
         for (Table table : tables) {
             // 指定实体类文件输出文件
             try (final BufferedWriter bufferedWriter = new BufferedWriter(
                     new OutputStreamWriter(
-                            Files.newOutputStream(Paths.get(CLASSPATH + table.getEntityName() + ".java"))
+                            Files.newOutputStream(Paths.get(packagePath + table.getEntityName() + ".java"))
                     )
             )) {
                 // 获取模板文件
@@ -68,11 +80,12 @@ public class EntityGenerator {
     /**
      * 如果指定的包不存在，则新建一个
      *
+     * @param packagePath 包路径
      * @author shiloh
      * @date 2023/8/2 16:59
      */
-    private static void createPackageIfNotExists() throws IOException {
-        final Path path = Paths.get(CLASSPATH);
+    private static void createPackageIfNotExists(String packagePath) throws IOException {
+        final Path path = Paths.get(packagePath);
         if (!Files.exists(path)) {
             Files.createDirectories(path);
         }
